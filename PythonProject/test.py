@@ -1,6 +1,6 @@
 def outtest(info):
     if info == "hello world":
-        print("你不能hello world")
+        assert(1 > 2)
     else:
         print(info)
 
