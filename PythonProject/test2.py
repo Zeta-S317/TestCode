@@ -57,7 +57,7 @@ def test2():
     result_list = [{"name": name, "total_time_percentage": total_time_percentage} for name, total_time_percentage in
                    name_dic.items()]
 
-    print(result_list)
+    # print(result_list)
 
 
 test2()
@@ -69,25 +69,35 @@ list_box2 = []
 storage = []
 
 #
-# def test3(list_data):
-#     count = 0
-#     if isinstance(list_data, list):
-#         for i in list_data:
-#             test3(i)
-#     elif isinstance(list_data, dict):
-#         if "children" in list_data:
-#             storage.append(list_data["name"] + "/")
-#             select_dic = {c_key: list_data[c_key] for c_key in select_keys}
-#             select_dic["name"] = storage[0] + list_data["name"]
-#             list_box2.append(select_dic)
-#             count += 1
-#             for k in list_data["children"]:
-#                 test3(k)
-#         else:
-#             select_dic = {c_key: list_data[c_key] for c_key in select_keys}
-#             if count > 1:
-#                 select_dic["name"] = storage[0] + list_data["name"]
-#             list_box2.append(select_dic)
+def test3(list_data, path=""):
+    count = 0
+    if isinstance(list_data, list):
+        for i in list_data:
+            test3(i, path)
+    elif isinstance(list_data, dict):
+        # 构建当前路径
+        current_path = path + list_data["name"]
+
+        if "children" in list_data:
+            # 有子节点时，路径后面添加斜杠
+            full_path = current_path + "/"
+            select_dic = {c_key: list_data[c_key] for c_key in select_keys}
+            select_dic["name"] = full_path
+            list_box2.append(select_dic)
+            count += 1
+            for k in list_data["children"]:
+                test3(k, full_path)
+        else:
+            # 没有子节点时，不添加斜杠
+            select_dic = {c_key: list_data[c_key] for c_key in select_keys}
+            select_dic["name"] = current_path
+            list_box2.append(select_dic)
+
+# 调用函数示例
+test3(data)
+
+print(list_box2)
+
 #
 #
 #
