@@ -32,7 +32,7 @@ def test(list_data):
 
 
 test(data)
-print(list_box)
+# print(list_box)
 
 
 test_dic = []
@@ -41,27 +41,23 @@ time = False
 
 
 def test2():
-    list_a = []
-    list_c = []
-    list_d = []
+    # 初始化一个空字典用于累加 total_time_percentage
+    name_dic = {}
 
-    for n in range(len(list_box)):
-        v1 = list_box[n]["name"]
-        list_a.append(v1)
+    # 遍历 list_box，累加 total_time_percentage
+    for i in list_box:
+        name = i["name"]
+        total_time_percentage = i["total_time_percentage"]
 
-    list_b = list(set(list_a))
-    for i in list_b:
-        list_c.append({"name": i, "total_time_percentage": 0})
+        if name not in name_dic:
+            name_dic[name] = 0
+        name_dic[name] += total_time_percentage
 
+    # 将累加结果转换为所需的列表形式
+    result_list = [{"name": name, "total_time_percentage": total_time_percentage} for name, total_time_percentage in
+                   name_dic.items()]
 
-    for n in range(len(list_box)):
-        v1 = list_box[n]["name"]
-        v2 = list_box[n]["total_time_percentage"]
-
-        for c in list_c:
-            if v1 == c["name"]:
-                c["total_time_percentage"] += v2
-                list_d.append(c)
+    print(result_list)
 
 
 test2()
@@ -72,30 +68,30 @@ test2()
 list_box2 = []
 storage = []
 
-
-def test3(list_data):
-    count = 0
-    if isinstance(list_data, list):
-        for i in list_data:
-            test3(i)
-    elif isinstance(list_data, dict):
-        if "children" in list_data:
-            storage.append(list_data["name"] + "/")
-            select_dic = {c_key: list_data[c_key] for c_key in select_keys}
-            select_dic["name"] = storage[0] + list_data["name"]
-            list_box2.append(select_dic)
-            count += 1
-            for k in list_data["children"]:
-                test3(k)
-        else:
-            select_dic = {c_key: list_data[c_key] for c_key in select_keys}
-            if count > 1:
-                select_dic["name"] = storage[0] + list_data["name"]
-            list_box2.append(select_dic)
-
-
-
-
-test3(data)
+#
+# def test3(list_data):
+#     count = 0
+#     if isinstance(list_data, list):
+#         for i in list_data:
+#             test3(i)
+#     elif isinstance(list_data, dict):
+#         if "children" in list_data:
+#             storage.append(list_data["name"] + "/")
+#             select_dic = {c_key: list_data[c_key] for c_key in select_keys}
+#             select_dic["name"] = storage[0] + list_data["name"]
+#             list_box2.append(select_dic)
+#             count += 1
+#             for k in list_data["children"]:
+#                 test3(k)
+#         else:
+#             select_dic = {c_key: list_data[c_key] for c_key in select_keys}
+#             if count > 1:
+#                 select_dic["name"] = storage[0] + list_data["name"]
+#             list_box2.append(select_dic)
+#
+#
+#
+#
+# test3(data)
 # print(list_box2)
 
