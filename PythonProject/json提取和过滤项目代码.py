@@ -1,6 +1,6 @@
 import json
 
-with open('func_data_summary.json', 'r', encoding='utf-8') as f:
+with open('data/func_data_summary.json', 'r', encoding='utf-8') as f:
     json_data = json.load(f)
 
 # 第一题，获取全部为name和total_time_percentage的数据，包括children里的
