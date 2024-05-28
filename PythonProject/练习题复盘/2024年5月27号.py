@@ -1,16 +1,16 @@
 """
 test = 0
-for i in range(1, 100):
+for i in range(1, 101):
     test += i
 print(test)
-Range只到100-1,需要多加记忆，
+# Range只到100-1,需要多加记忆，
+
+# """
 
 """
-
-"""
-# count = 0
+count = 0
 result = 0
-while count <= 100:   应该是小于,而不是等于，不然会多出1
+while count < 100:   #  应该是小于,而不是等于，不然会多出1
     count += 1
     print(count)
     result += count
@@ -70,7 +70,6 @@ for i in nums:
         # 判断是否小于0且不是非int的数据
 """
 
-
 """
 words = ['look', 'into', 'my', 'eyes', 'look', 'into', 'my', 'eyes', 'the', 'eyes', 'the', 'eyes', 'the', 'eyes', 'not',
          'around', 'the', 'eyes', "don't", 'look', 'around', 'the', 'eyes', 'look', 'into', 'my', 'eyes', "you\'re",
@@ -87,9 +86,9 @@ for i in words:
 Top_three = []
 test = sorted(test.items(), key=lambda x: x[1], reverse=True)
 for i in test[0:3]:
-    for k in i:
-        if type(k) is str:
-            Top_three.append(k)
+    # for k in i:
+    #     if type(k) is str:
+    #         Top_three.append(k)
 
 print(Top_three)
 
@@ -99,7 +98,7 @@ print(Top_three)
 
 """
 def test(n):
-    if n == 0 or n == 1:
+    if n == 0:
         return 1
     else:
         return n * test(n-1)
@@ -108,3 +107,28 @@ def test(n):
 result = test(100)
 print(result)
 """
+
+
+# class Test:
+#
+#     def __init__(self, file_name, file_model):
+#         self.file_name = file_name
+#         self.file_model = file_model
+#
+#
+#     def __enter__(self):
+#         print("进入上文方法")
+#         # 返回文件资源
+#         self.file = open(self.file_name, self.file_model)
+#         return self.file
+#
+#     # 下文方法
+#     def __exit__(self, exc_type, exc_val, exc_tb):  # 里面参数是固定的，会自动生成
+#         print("进入下文方法")
+#         self.file.close()
+#
+#
+# if __name__ == '__main__':
+#     with Test("1.txt", "r") as file:
+#         file_data = file.read()
+#         print(file_data)
