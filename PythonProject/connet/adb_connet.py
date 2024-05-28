@@ -36,7 +36,7 @@ class DouYinTest:
         # 等待2秒后打开评论区
         # 填写评论
     def down_scr(self):
-        d.down
+        d.swipe("up", scale=0.8)
 
 
 if __name__ == "__main__":
