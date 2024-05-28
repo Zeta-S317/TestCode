@@ -1,7 +1,5 @@
 import uiautomator2 as u2
 
-d = u2.connect()
-
 
 # print(d.)
 # print(d.app_list())
@@ -13,31 +11,30 @@ d = u2.connect()
 # d.app_stop("com.tencent.mm")
 
 
-# import uiautomator2 as u2
+d = u2.connect()
+d.app_start("com.ss.android.ugc.aweme")
+d.app_wait("com.ss.android.ugc.aweme", 10)
+print("请确认你的抖音是否存在于设备上或响应超时")
+
+
+
+
+
+# class DouYinTest:
+#     def __init__(self, timecount, input_info):
+#         self.timecount = timecount
+#         self.input_info = input_info
+#     def star_and_sub(self):
+#         d.click() # 点赞
+#         d.click() # 点关注
+#
+#     def send_info(self):
+#         d.send_keys(self.input_info, clear=True)
+#         # 等待2秒后打开评论区
+#         # 填写评论
+#     def down_scr(self):
+#         d.swipe("up", scale=0.8)
 #
 #
-# d = u2.connect()
-# for i in d.app_list():
-#     if i == "com.ss.android.ugc.aweme":
-#         print("找到抖音，开始启动")
-#         d.app_start("com.ss.android.ugc.aweme")
-#         break
-
-class DouYinTest:
-    def __init__(self, timecount, input_info):
-        self.timecount = timecount
-        self.input_info = input_info
-    def star_and_sub(self):
-        d.click() # 点赞
-        d.click() # 点关注
-
-    def send_info(self):
-        d.send_keys(self.input_info, clear=True)
-        # 等待2秒后打开评论区
-        # 填写评论
-    def down_scr(self):
-        d.swipe("up", scale=0.8)
-
-
-if __name__ == "__main__":
-    DouYinTest(3, "测试")
+# if __name__ == "__main__":
+#     DouYinTest(3, "测试")
