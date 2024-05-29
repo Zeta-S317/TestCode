@@ -24,11 +24,11 @@ class DouYinTest:
             print(get_now_time() + "抖音正在运行，为防止抖音卡住其他页面，重启抖音")
             self.d.app_stop("com.ss.android.ugc.aweme")
             self.d.app_start("com.ss.android.ugc.aweme")
-            self.d.wait_activity("com.ss.android.ugc.aweme", 5)
+            self.d.wait_activity("com.ss.android.ugc.aweme", 15)
         else:
             self.d.app_start("com.ss.android.ugc.aweme")
             print(get_now_time() + "抖音未运行，正在启动抖音")
-            self.d.wait_activity("com.ss.android.ugc.aweme", 5)
+            self.d.wait_activity("com.ss.android.ugc.aweme", 15)
 
         self.error = get_now_time() + "当前应用不是抖音，终止程序！"
 
@@ -39,6 +39,7 @@ class DouYinTest:
             self.douyin = self.d.app_current()
             if self.douyin["package"] == "com.ss.android.ugc.aweme":
                 print(self.video + "初始化")
+                self.d.wait_activity("com.ss.android.ugc.aweme", 15)
                 self.__like()
             else:
                 print(self.error)
